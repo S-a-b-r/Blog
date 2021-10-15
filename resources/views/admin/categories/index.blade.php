@@ -27,6 +27,7 @@
                                     <th>Название</th>
                                     <th>Создано:</th>
                                     <th>Обновлено</th>
+                                    <th colspan="3" class="text-center">Действие</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -36,9 +37,19 @@
                                     <td>{{$category->title}}</td>
                                     <td>{{$category->created_at}}</td>
                                     <td>{{$category->updated_at}}</td>
+                                    <td><a href="{{route('admin.category.show',$category->id)}}"><i class="far fa-eye"></i></a></td>
+                                    <td><a href="{{route('admin.category.edit',$category->id)}}"><i class="fas fa-pen text-success"></i></a></td>
+                                    <td>
+                                        <form action="{{route('admin.category.delete', $category->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                <i class="fas fa-trash text-danger" ></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>
