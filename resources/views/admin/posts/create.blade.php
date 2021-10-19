@@ -3,6 +3,7 @@
 @section('title')
     Добавление поста
 @endsection
+
 @section('content')
     <!-- Main content -->
     <section class="content">
@@ -18,7 +19,7 @@
                                 <input class="form-control" name="title" placeholder="Название поста" value="{{old('title')}}">
                                 @error('title')
                                     <div class="text-danger">
-                                        Это поле необходимо заполнить
+                                        {{$message}}
                                     </div>
                                 @enderror
                             </div>
@@ -28,7 +29,7 @@
                             <textarea id="summernote" name="content">{{old('content')}}</textarea>
                             @error('content')
                             <div class="text-danger">
-                                Это поле необходимо заполнить
+                                {{$message}}
                             </div>
                             @enderror
                         </div>
@@ -44,7 +45,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Multiple</label>
+                            <label>Добавьте тэги</label>
                             <select class="select2" multiple="multiple" name="tags_id[]" data-placeholder="Добавьте теги" style="width: 100%;">
                                 @foreach($tags as $tag)
                                     <option value="{{$tag->id}}"
@@ -65,7 +66,7 @@
                             </div>
                             @error('preview_image')
                             <div class="text-danger">
-                                Это поле необходимо заполнить
+                                {{$message}}
                             </div>
                             @enderror
                         </div>
@@ -82,13 +83,13 @@
                             </div>
                             @error('main_image')
                             <div class="text-danger">
-                                Это поле необходимо заполнить
+                                {{$message}}
                             </div>
                             @enderror
                         </div>
 
 
-                        <input type="submit" class="btn btn-primary" value="Добавить">
+                        <input type="submit" class="btn btn-primary mb-4" value="Добавить">
                     </form>
                 </div>
             </div>
