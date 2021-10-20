@@ -35,6 +35,21 @@
                                 @enderror
                             </div>
                         </div>
+                        <div>
+                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                        </div>
+
+                        <div class="form-group col-9">
+                            <label>
+                                Изменить
+                            </label>
+                            <select class="form-control" name="role">
+                                @foreach($roles as $id => $role)
+                                    <option value="{{$id}}"
+                                        {{($id == $user->role)? 'selected':''}} >{{$role}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <input type="submit" class="btn btn-primary" value="Сохранить">
                     </form>
                 </div>

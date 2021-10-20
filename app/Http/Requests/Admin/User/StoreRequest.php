@@ -25,8 +25,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'name'=> 'required|string',
-            'password'=> 'required|string|min:8',
-            'email'=>'required|string|unique:users'
+            'email'=>'required|string|unique:users',
+            'role'=>'required|integer'
         ];
     }
 
@@ -36,9 +36,6 @@ class StoreRequest extends FormRequest
         return [
             'name.required'=>'Это поле необходимо заполнить',
             'name.string'=>'Это поле должно быть строкой',
-            'password.required'=>'Это поле необходимо заполнить',
-            'password.string'=>'Это поле должно быть строкой',
-            'password.min'=>'Минимальная длина пароля 8 символов',
             'email.required'=>'Это поле необходимо заполнить',
             'email.unique'=>'Пользователь с таким email уже существует',
             'email.string'=>'Это поле должно быть строкой'

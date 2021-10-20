@@ -2,10 +2,13 @@
 
 namespace App\Services;
 
+use App\Mail\User\PasswordMail;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserService
 {
@@ -14,8 +17,12 @@ class UserService
         try{
             DB::beginTransaction();
 
-            $data['password'] = Hash::make($data['password']);
+            $password = Str::random(10);//Генерируем пароль
+            $data['password'] = Hash::make($password);//Добавляем хэш пароля в БД
+
             User::firstOrCreate(['email'=>$data['email']],$data);
+
+            Mail::to($data['email'])->send(new PasswordMail($password));//отправляем письмо с паролем
 
             DB::commit();
         } catch (\Exception $exception){
