@@ -60,6 +60,6 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin', 'middleware'=>['auth','ad
         Route::delete('/{user}/delete', 'DeleteController')->name('admin.user.delete');
     });
 });
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
