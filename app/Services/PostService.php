@@ -33,10 +33,13 @@ class PostService
 
     public function update($data, $post)
     {
+        DB::beginTransaction();
         try{
-            DB::beginTransaction();
-            $tagsId = $data['tags_id'];
-            unset($data['tags_id']);
+            if(array_key_exists('tags_id',$data)) {
+                $tagsId = $data['tags_id'];
+                unset($data['tags_id']);
+            }
+
             if( array_key_exists('preview_image',$data)){
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             }
@@ -45,7 +48,11 @@ class PostService
             }
 
             $post->update($data);
-            $post->tags()->sync($tagsId);
+
+            if(array_key_exists('tags_id', $data)) {
+                $post->tags()->sync($tagsId);
+            }
+
             DB::commit();
         } catch (\Exception $exception){
             DB::rollBack();

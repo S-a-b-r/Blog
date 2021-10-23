@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@section('title')
+    Добавление категории
+@endsection
+
 @section('content')
     <!-- Main content -->
     <section class="content">
@@ -7,7 +11,6 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <h5>Добавление категории</h5>
                     <form class="col-4" action="{{route('admin.category.store')}}" method="post">
                         @csrf
 

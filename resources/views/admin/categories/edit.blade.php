@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@section('title')
+    Редактирование категории
+@endsection
+
 @section('content')
     <!-- Main content -->
     <section class="content">
@@ -7,7 +11,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <h5>Редактировние категории {{$category->title}}</h5>
+                    <h5>"{{$category->title}}"</h5>
                     <form class="col-4" action="{{route('admin.category.update', $category)}}" method="post">
                         @csrf
 

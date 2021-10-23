@@ -37,7 +37,7 @@
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->created_at}}</td>
                                     <td>{{$post->updated_at}}</td>
-                                    <td><a href="{{route('admin.post.show',$post->id)}}"><i class="far fa-eye"></i></a></td>
+                                    <td><a href="{{route('blog.show',$post->id)}}"><i class="far fa-eye"></i></a></td>
                                     <td><a href="{{route('admin.post.edit',$post->id)}}"><i class="fas fa-pen text-success"></i></a></td>
                                     <td>
                                         <form action="{{route('admin.post.delete', $post->id)}}" method="post">
