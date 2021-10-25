@@ -29,42 +29,22 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('blog.main')}}">Home</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('blog.about')}}">About</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('blog.contact')}}">Contact</a></li>
-                <li class="nav-item">
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                @auth()
+                    <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('personal.index')}}">{{auth()->user()->name}}</a>
+                    </li>
+                    @if(auth()->user()->role == 0)
+                        <li class="nav-item">
+                            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('admin.index')}}">Admin panel</a>
+                        </li>
+                    @endif
+                @endauth
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </li>
+                @guest()
+                    <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('personal.index')}}">Log in</a>
+                    </li>
+                @endguest
             </ul>
         </div>
     </div>

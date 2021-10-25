@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Main'], function () {
     Route::get('/about','AboutController')->name('blog.about');
     Route::get('/show/{post}', 'ShowPostController')->name('blog.show');
     Route::get('/contact', 'ContactController')->name('blog.contact');
+    Route::post('/contact', 'ContactStoreController')->name('blog.contact.store');
+
 });
 
 Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth']], function () {
@@ -41,6 +43,10 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
     Route::get('/', 'IndexController')->name('admin.index');
+
+    /*Route::group(['namespace'=>'Contact', 'prefix'=>'contact'], function(){
+        Route::get('/', 'IndexController')->name('admin.contact.index');
+    });*/
 
     Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
         Route::get('/', 'IndexController')->name('admin.category.index');

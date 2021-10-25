@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title'=> 'required|string',
+            'description'=>'required|string',
             'content'=> 'required',
             'preview_image' => 'required|image',
             'main_image' => 'required|image',
@@ -38,6 +39,8 @@ class StoreRequest extends FormRequest
         return [
             'title.required' => 'Это поле необходимо для заполнения',
             'title.string' => 'Данные должны передаваться строкой',
+            'description.string' => 'Данные должны передаваться строкой',
+            'description.required' => 'Это поле необходимо для заполнения',
             'content.required' => 'Это поле необходимо для заполнения',
             'content.string' => 'Данные должны передаваться строкой',
             'preview_image.required' => 'Это поле необходимо для заполнения',

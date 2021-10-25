@@ -10,6 +10,7 @@ class StoreController extends BaseController
     {
 
         $data = $req->validated();
+        $data['creator_id'] = auth()->user()->id;
         $this->service->store($data);
 
         return redirect()->route('admin.post.index');

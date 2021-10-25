@@ -21,7 +21,7 @@
                 <div class="post-preview">
                     <a href="{{route('blog.show', $post->id)}}">
                         <h2 class="post-title">{{$post->title}}</h2>
-                        <h3 class="post-subtitle">{!! $post->content !!} </h3>
+                        <h3 class="post-subtitle">{{ $post->description }} </h3>
                         <img src="{{"storage/" . $post->preview_image}}" class="w-100">
                     </a>
                     <p class="post-meta">
@@ -31,8 +31,11 @@
                 <!-- Divider-->
                 <hr class="my-4" />
             @endforeach
-            <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+
+            {{--pagination--}}
+            <div class="mx-auto col-3">
+                {{$posts->links()}}
+            </div>
         </div>
     </div>
 </div>

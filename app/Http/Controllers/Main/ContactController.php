@@ -9,7 +9,6 @@ class ContactController extends Controller
 {
     public function __invoke()
     {
-        $user = auth()->user();
-        return view('main.contact',compact('user'));
+        return view('main.contact');
     }
 }

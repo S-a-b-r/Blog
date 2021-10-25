@@ -44,7 +44,7 @@
                 <form action="{{route('logout')}}" method="post">
                     @csrf
 
-                    <input type="submit" value="Выйти" class="btn btn-secondary">
+                    <input type="submit" value="Выйти из аккаунта" class="btn btn-light">
                 </form>
             </li>
         </ul>

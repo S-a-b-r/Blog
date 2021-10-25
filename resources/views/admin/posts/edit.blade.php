@@ -24,6 +24,17 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <label>Введите описание поста</label>
+                                <input class="form-control" name="description" placeholder="Описание поста" value="{{$post->description}}">
+                                @error('description')
+                                <div class="text-danger">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form-group col-9">
                             <label>Текст поста</label>
                             <textarea id="summernote" name="content">{{$post->content}}</textarea>

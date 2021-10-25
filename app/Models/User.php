@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use mysql_xdevapi\Exception;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
