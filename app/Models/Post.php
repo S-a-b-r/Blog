@@ -29,6 +29,11 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'post_user_likes','post_id', 'user_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id','id')->orderBy('created_at','desc')->take(5);
+    }
+
     public function getCreator()
     {
         return $this->belongsTo(User::class,'creator_id','id');

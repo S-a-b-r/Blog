@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController')->name('blog.main');
     Route::get('/about','AboutController')->name('blog.about');
     Route::get('/show/{post}', 'ShowPostController')->name('blog.show');
+    Route::post('/show/comments/{post}', 'StoreController')->name('blog.comment.store');
     Route::get('/contact', 'ContactController')->name('blog.contact');
     Route::post('/contact', 'ContactStoreController')->name('blog.contact.store');
 
