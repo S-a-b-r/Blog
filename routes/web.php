@@ -49,6 +49,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     /*Route::group(['namespace'=>'Contact', 'prefix'=>'contact'], function(){
         Route::get('/', 'IndexController')->name('admin.contact.index');
     });*/
+    Route::group(['namespace'=>'Contact', 'prefix' => 'contact'], function(){
+        Route::get('/','IndexController')->name('admin.contact.index');
+        Route::get('/{contact}/answer','AnswerController')->name('admin.contact.answer');
+        Route::post('/{contact}/send','SendController')->name('admin.contact.send');
+    });
 
     Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
         Route::get('/', 'IndexController')->name('admin.category.index');

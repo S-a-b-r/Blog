@@ -45,27 +45,30 @@
                     </div>
 
                     <h5>Comments</h5>
-                    @foreach($post->comments as $comment)
-                    <div class="card" style="font-size: 16px">
-                        <!-- User image -->
-                        <div class="comment-text">
-                            <span class="username">
-                                <div class="card-header">
-                                    {{$comment->user->name}}
-                                    <span class="text-muted float-right">
-                                        {{$comment->DateAsCarbon->format('j-n-Y  G:i:s')}}
-                                    </span>
+                    @if($post->comments->count() == 0)
+                        No one has left comments yet
+                    @else
+                        @foreach($post->comments as $comment)
+                        <div class="card" style="font-size: 16px">
+                            <!-- User image -->
+                            <div class="comment-text">
+                                <span class="username">
+                                    <div class="card-header">
+                                        {{$comment->user->name}}
+                                        <span class="text-muted float-right">
+                                            {{$comment->DateAsCarbon->format('j-n-Y  G:i:s')}}
+                                        </span>
+                                    </div>
+                                </span><!-- /.username -->
+                                <div class="card-body">
+                                    {{$comment->content}}
                                 </div>
-                            </span><!-- /.username -->
-                            <div class="card-body">
-                                {{$comment->content}}
                             </div>
+                            <!-- /.comment-text -->
                         </div>
-                        <!-- /.comment-text -->
-                    </div>
-                    <br/>
-                    @endforeach
-
+                        <br/>
+                        @endforeach
+                    @endif
                     @auth
                         <form method="post" action="{{route('blog.comment.store', $post->id)}}">
                             @csrf

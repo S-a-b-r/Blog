@@ -25,7 +25,12 @@
                         <img src="{{"storage/" . $post->preview_image}}" class="w-100">
                     </a>
                     <p class="post-meta d-flex justify-content-between mt-1">
-                        Posted on {{$post->created_at}}
+                        <span>
+                            Posted on {{$post->created_at}}
+                            <span class="m-3">
+                                Author: {{$post->getCreator->name}}
+                            </span>
+                        </span>
                         <span>
                             <i class="fas fa-heart"></i>
                             {{$post->likedUsers->count()}}

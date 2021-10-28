@@ -31,7 +31,7 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'user_id','id')->orderBy('created_at','desc')->take(5);
+        return $this->hasMany(Comment::class, 'post_id','id')->orderBy('created_at','desc')->take(5);
     }
 
     public function getCreator()
