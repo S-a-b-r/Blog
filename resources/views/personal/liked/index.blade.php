@@ -31,7 +31,7 @@
                                         <td>{{$post->title}}</td>
                                         <td>{{$post->created_at}}</td>
                                         <td>{{$post->updated_at}}</td>
-                                        <td><a href="{{route('admin.post.show',$post->id)}}"><i class="far fa-eye"></i></a></td>
+                                        <td><a href="{{route('blog.show',$post->id)}}"><i class="far fa-eye"></i></a></td>
                                         <td>
                                             <form action="{{route('personal.liked.delete', $post->id)}}" method="post">
                                                 @csrf

@@ -24,8 +24,12 @@
                         <h3 class="post-subtitle">{{ $post->description }} </h3>
                         <img src="{{"storage/" . $post->preview_image}}" class="w-100">
                     </a>
-                    <p class="post-meta">
+                    <p class="post-meta d-flex justify-content-between mt-1">
                         Posted on {{$post->created_at}}
+                        <span>
+                            <i class="fas fa-heart"></i>
+                            {{$post->likedUsers->count()}}
+                        </span>
                     </p>
                 </div>
                 <!-- Divider-->

@@ -20,12 +20,30 @@
                     <p>
                     {!! $post->content !!}
                     </p>
-                    <p class="post-meta">
-                        Author: {{$post->getCreator->name}}
-                    </p>
-                    <p class="post-meta">
-                        Published on: {{$date->format('j-n-Y')}}
-                    </p>
+                    <div>
+                        <p class="post-meta">
+                            Author: {{$post->getCreator->name}}
+                        </p>
+
+                        <div class="d-flex justify-content-between col-11">
+                            <p class="post-meta">
+                                Published on: {{$date->format('j-n-Y')}}
+                            </p>
+                            @auth()
+                                <form action="{{route('blog.like.store', $post)}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="bg-transparent border-0">
+                                        @if(auth()->user()->likedPosts->contains($post->id))
+                                            <i class="fas fa-heart"></i>
+                                        @else
+                                            <i class="far fa-heart"></i>
+                                        @endif
+                                    </button>
+                                </form>
+                            @endauth
+                        </div>
+                    </div>
+
                     <h5>Comments</h5>
                     @foreach($post->comments as $comment)
                     <div class="card" style="font-size: 16px">
