@@ -5,21 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>Sabr's blog</title>
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+
+
     <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon.ico')}}" />
-    <!-- Font Awesome icons (free version)-->
+
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
+    <!-- Font Awesome icons (free version)-->
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+
+
 </head>
 <body>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{{route('blog.main')}}">Start Bootstrap</a>
+        <a class="navbar-brand" href="{{route('blog.main')}}">Sabr's blog</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -33,11 +40,11 @@
                     <li class="nav-item">
                     <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('personal.index')}}">{{auth()->user()->name}}</a>
                     </li>
-                    @if(auth()->user()->role == 0)
+                    @admin()
                         <li class="nav-item">
                             <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('admin.index')}}">Admin panel</a>
                         </li>
-                    @endif
+                    @endadmin
                 @endauth
 
                 @guest()
@@ -62,6 +69,12 @@
         </div>
     </div>
 </header>
+
+@if(session('success'))
+    <div class="alert alert-success container">
+        {{session('success')}}
+    </div>
+@endif
 <!-- Main Content-->
 @yield('content')
 <!-- Footer-->
@@ -100,9 +113,20 @@
         </div>
     </div>
 </footer>
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+
 <!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+
 <!-- Core theme JS-->
 <script src="{{asset('js/scripts.js')}}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.select2').select2()
+    });
+</script>
+
 </body>
 </html>

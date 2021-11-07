@@ -45,6 +45,7 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
     Route::get('/', 'IndexController')->name('admin.index');
+    Route::get('/reset/{password}', 'ResetController')->name('admin.reset');
 
     /*Route::group(['namespace'=>'Contact', 'prefix'=>'contact'], function(){
         Route::get('/', 'IndexController')->name('admin.contact.index');

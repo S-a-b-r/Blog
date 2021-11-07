@@ -10,7 +10,7 @@
 @endsection
 
 @section('description')
-    Have questions? I have answers.
+    Есть вопросы? У меня есть ответы
 @endsection
 
 @section('content')
@@ -18,13 +18,7 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{session('success')}}
-                    </div>
-                @endif
-                <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as
-                    soon as possible!</p>
+                <p>Хотите задать вопрос? Заполните форму ниже и отправьте, я обязательно вам отвечу. Только убедитесь, что ваша почта указана верно, договорились?</p>
                 <div class="my-5">
                     <form id="contactForm" action="{{route('blog.contact.store')}}" method="post">
                         @csrf

@@ -20,7 +20,7 @@ class PostService
             $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
 
             $post = Post::firstOrCreate($data);
-            if(array_key_exists('tags_id', $data)) {
+            if(isset($tagsId)) {
                 $post->tags()->attach($tagsId);
             }
             DB::commit();
@@ -49,7 +49,7 @@ class PostService
 
             $post->update($data);
 
-            if(array_key_exists('tags_id', $data)) {
+            if(isset($tagsId)) {
                 $post->tags()->sync($tagsId);
             }
 

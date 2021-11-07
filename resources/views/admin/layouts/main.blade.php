@@ -86,7 +86,6 @@
         <!-- /.content-header -->
     <!-- Content Wrapper. Contains page content -->
     @include('admin.includes.sidebar')
-
     @yield('content')
     </div>
     <!-- /.content-wrapper -->
@@ -131,11 +130,12 @@
                 ['height', ['height']]
             ]
         });
+        $(function (){
+            bsCustomFileInput.init();
+        });
+        $('.select2').select2();
     });
-    $(function (){
-        bsCustomFileInput.init();
-    });
-    $('.select2').select2();
+
 </script>
 </body>
 </html>
