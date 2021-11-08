@@ -10,7 +10,7 @@ class IndexController extends BaseController
 {
     public function __invoke()
     {
-        $posts = Post::all();
+        $posts = Post::where('status','0')->orWhere('status', '1')->get();
         return view('admin.posts.index', compact('posts'));
     }
 }

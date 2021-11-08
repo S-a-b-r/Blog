@@ -49,7 +49,7 @@ class IndexController extends Controller
             $query->where('category_id',$req->input('category'));
         }
 
-        $posts = $query->paginate(10);
+        $posts = $query->where('status','1')->paginate(10);
 
 
 //        $posts = Post::orderBy('created_at', 'DESC')->get()->take(5);

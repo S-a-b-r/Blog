@@ -81,7 +81,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/{post}', 'ShowController')->name('admin.post.show');
         Route::get('/{post}/edit', 'EditController')->name('admin.post.edit');
         Route::post('/{post}/edit', 'UpdateController')->name('admin.post.update');
+        Route::post('/{post}/archive', 'ArchiveController')->name('admin.post.archive');
+        Route::post('/{post}/rearchive', 'RearchiveController')->name('admin.post.rearchive');
+        Route::post('/{post}/publish', 'PublishController')->name('admin.post.publish');
+        Route::post('/{post}/unpublish', 'UnpublishController')->name('admin.post.unpublish');
         Route::delete('/{post}/delete', 'DeleteController')->name('admin.post.delete');
+    });
+    Route::group(['namespace' => 'Archive', 'prefix' => 'archive'], function () {
+       Route::get('/', 'IndexController')->name('admin.archive.index');
     });
     Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
         Route::get('/', 'IndexController')->name('admin.user.index');

@@ -65,7 +65,7 @@
                         </div>
                         <br/>
 
-                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">
+                        <button class="btn btn-outline-secondary text-uppercase" id="submitButton" type="submit">
                             Send
                         </button>
                     </form>

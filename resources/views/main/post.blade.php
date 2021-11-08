@@ -90,7 +90,7 @@
                                 @enderror
                             </div>
 
-                            <button class="btn btn-primary text-uppercase" type="submit">
+                            <button class="btn btn-outline-secondary text-uppercase" type="submit">
                                 Send
                             </button>
                         </form>
