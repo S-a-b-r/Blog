@@ -69,32 +69,30 @@
                         <br/>
                         @endforeach
                     @endif
-                    @auth
-                        <form method="post" action="{{route('blog.comment.store', $post->id)}}">
-                            @csrf
-                            @if(session('success'))
-                                <div class="alert alert-success">
-                                    {{session('success')}}
-                                </div>
-                            @endif
-
-                            <h5 class="mt-4">You can leave a comment</h5>
-                            <div class="form-floating">
-                                <textarea class="form-control mb-3" id="message" name="content" placeholder="Enter your message here..."
-                                          style="height: 7rem"></textarea>
-                                <label for="message">Message</label>
-                                @error('content')
-                                <div class="text-danger">
-                                    {{$message}}
-                                </div>
-                                @enderror
+                    <form method="post" action="{{route('blog.comment.store', $post->id)}}">
+                        @csrf
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{session('success')}}
                             </div>
+                        @endif
 
-                            <button class="btn btn-outline-secondary text-uppercase" type="submit">
-                                Send
-                            </button>
-                        </form>
-                    @endauth
+                        <h5 class="mt-4">You can leave a comment</h5>
+                        <div class="form-floating">
+                            <textarea class="form-control mb-3" id="message" name="content" placeholder="Enter your message here..."
+                                      style="height: 7rem"></textarea>
+                            <label for="message">Message</label>
+                            @error('content')
+                            <div class="text-danger">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <button class="btn btn-outline-secondary text-uppercase" type="submit">
+                            Send
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -13,7 +13,12 @@ class StoreController extends Controller
     {
         $data = $req->validated();
         $data['post_id'] = $post->id;
-        $data['user_id'] = auth()->user()->id;
+        if(!is_null(auth()->user())){
+            $data['user_id'] = auth()->user()->id;
+        }
+        else{
+            $data['user_id'] = 2;
+        }
         Comment::create($data);
         return redirect()->route('blog.show', $post)->with('success','The comment was successfully left');
     }

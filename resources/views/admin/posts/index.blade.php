@@ -43,7 +43,7 @@
                                         <td>
                                             <form action="{{route('admin.post.publish', $post->id)}}" method="post">
                                                 @csrf
-                                                <button type="submit" class="border-0 bg-transparent">
+                                                <button type="submit" class="border-0 bg-transparent" title="Опубликовать">
                                                     <i class="fas fa-upload"></i>
                                                 </button>
                                             </form>
@@ -54,7 +54,7 @@
                                         <td>
                                             <form action="{{route('admin.post.unpublish', $post->id)}}" method="post">
                                                 @csrf
-                                                <button type="submit" class="border-0 bg-transparent">
+                                                <button type="submit" class="border-0 bg-transparent" title="Снять с публикации">
                                                     <i class="fas fa-download"></i>
                                                 </button>
                                             </form>

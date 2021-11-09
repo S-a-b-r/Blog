@@ -86,6 +86,20 @@
                         <a href="{{route('admin.contact.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{$data['new_comments']}}</h3>
+
+                            <p>New comments</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-comment-alt"></i>
+                        </div>
+                        <a href="{{route('admin.comment.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

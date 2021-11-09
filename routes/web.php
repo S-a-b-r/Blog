@@ -54,6 +54,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/','IndexController')->name('admin.contact.index');
         Route::get('/{contact}/answer','AnswerController')->name('admin.contact.answer');
         Route::post('/{contact}/send','SendController')->name('admin.contact.send');
+        Route::delete('/{contact}/delete', 'DeleteController')->name('admin.contact.delete');
+
+    });
+    Route::group(['namespace'=>'Comment', 'prefix' => 'comment'], function(){
+        Route::get('/','IndexController')->name('admin.comment.index');
+        Route::post('/{comment}/approve','ApproveController')->name('admin.comment.approve');
+        Route::delete('/{comment}/delete', 'DeleteController')->name('admin.comment.delete');
     });
 
     Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {

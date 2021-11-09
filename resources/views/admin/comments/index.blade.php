@@ -2,7 +2,7 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    Сообщения от пользователей
+    Комментарии
 @endsection
 
 @section('content')
@@ -19,8 +19,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Отправитель</th>
-                                    <th>Email</th>
+                                    <th>Статус</th>
                                     <th>Текст</th>
                                     <th>Создано</th>
                                     <th>Обновлено</th>
@@ -28,17 +27,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($contacts as $contact)
+                                @foreach($comments as $comment)
                                 <tr>
-                                    <td>{{$contact->id}}</td>
-                                    <td>{{$contact->name}}</td>
-                                    <td>{{$contact->email}}</td>
-                                    <td>{{$contact->content}}</td>
-                                    <td>{{$contact->created_at}}</td>
-                                    <td>{{$contact->updated_at}}</td>
-                                    <td><a href="{{route('admin.contact.answer',$contact->id)}}"><i class="fas fa-reply"></i></a></td>
+                                    <td>{{$comment->id}}</td>
+                                    <td>{{$comment->getStatus()}}</td>
+                                    <td>{{$comment->content}}</td>
+                                    <td>{{$comment->created_at}}</td>
+                                    <td>{{$comment->updated_at}}</td>
                                     <td>
-                                        <form action="{{route('admin.contact.delete',$contact->id)}}" method="post">
+                                        <form action="{{route('admin.comment.approve',$comment->id)}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                <i class="fas fa-check text-success"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="{{route('admin.comment.delete',$comment->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="border-0 bg-transparent">

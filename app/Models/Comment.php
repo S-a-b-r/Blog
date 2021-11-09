@@ -18,6 +18,15 @@ class Comment extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function getStatus(){
+        if($this->status == 1){
+            return "approve";
+        } else{
+            return "disapprove";
+        }
+    }
+
     public function getDateAsCarbonAttribute()
     {
         return Carbon::parse($this->created_at);
