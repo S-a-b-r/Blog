@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-8">
+                <div class="col-12">
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
@@ -25,6 +25,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
+                                    <th>Использовано раз</th>
                                     <th>Создано</th>
                                     <th>Обновлено</th>
                                     <th colspan="3" class="text-center">Действие</th>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td>{{$tag->id}}</td>
                                     <td>{{$tag->title}}</td>
+                                    <td>{{$tag->count()}}</td>
                                     <td>{{$tag->created_at}}</td>
                                     <td>{{$tag->updated_at}}</td>
                                     <td><a href="{{route('admin.tag.show',$tag->id)}}"><i class="far fa-eye"></i></a></td>

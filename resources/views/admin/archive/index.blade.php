@@ -11,7 +11,7 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-10">
+                <div class="col-12">
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
@@ -54,6 +54,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -62,6 +63,21 @@
             <!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
+        <form action="{{route('admin.test')}}" method="post">
+            @csrf
+            <div class="row h-100">
+                <div class="col-8 bg-danger ">
+                    <div class="row justify-content-center">
+                        <input name="1" id="1" type="checkbox">
+                        <input id="2" type="checkbox">
+                        <input id="3" type="checkbox">
+                        <input id="4" type="checkbox">
+                    </div>
+                </div>
+                <div class="col-4 bg-dark">2</div>
+            </div>
+            <button class="btn-danger" type="submit">Submit</button>
+        </form>
     </section>
     <!-- /.content -->
 @endsection

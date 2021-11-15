@@ -25,7 +25,7 @@
                 <select class="select2 form-select" multiple="multiple" name="tags_id[]" data-placeholder="Добавьте теги" style="width: 100%;">
                     @foreach($tags as $tag)
                         <option value="{{$tag->id}}"
-                            {{(is_array(request()->tags_id) && in_array($tag->id, request()->tags_id))? 'selected':''}}> {{$tag->title}}</option>
+                            {{(is_array(request()->tags_id) && in_array($tag->id, request()->tags_id))? 'selected':''}}>{{$tag->title}} {{$tag->count()}} </option>
                     @endforeach
                 </select>
             </div>

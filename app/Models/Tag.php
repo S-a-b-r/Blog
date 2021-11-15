@@ -15,4 +15,9 @@ class Tag extends Model
     protected $table = 'tags';
     protected $guarded = false;
 
+    public function count()
+    {
+        return $this->belongsToMany(Post::class, 'post_tags')->count();
+    }
+
 }
