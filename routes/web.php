@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\StartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,16 +42,10 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
-    Route::post('/1', function (\Illuminate\Http\Request $req){
-        dd($req);
-    })->name('admin.test');
 
     Route::get('/', 'IndexController')->name('admin.index');
     Route::get('/reset/{password}', 'ResetController')->name('admin.reset');
 
-    /*Route::group(['namespace'=>'Contact', 'prefix'=>'contact'], function(){
-        Route::get('/', 'IndexController')->name('admin.contact.index');
-    });*/
     Route::group(['namespace'=>'Contact', 'prefix' => 'contact'], function(){
         Route::get('/','IndexController')->name('admin.contact.index');
         Route::get('/{contact}/answer','AnswerController')->name('admin.contact.answer');
@@ -92,7 +85,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/{post}/edit', 'EditController')->name('admin.post.edit');
         Route::post('/{post}/edit', 'UpdateController')->name('admin.post.update');
         Route::post('/{post}/archive', 'ArchiveController')->name('admin.post.archive');
-        Route::post('/{post}/rearchive', 'RearchiveController')->name('admin.post.rearchive');
         Route::post('/{post}/publish', 'PublishController')->name('admin.post.publish');
         Route::post('/{post}/unpublish', 'UnpublishController')->name('admin.post.unpublish');
         Route::delete('/{post}/delete', 'DeleteController')->name('admin.post.delete');

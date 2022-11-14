@@ -10,7 +10,7 @@ class ArchiveController extends BaseController
 {
     public function __invoke(Post $post)
     {
-        $post->setAttribute('status', 2);
+        $post->setAttribute('status', Post::STATUS_ARCHIVED);
         $post->update();
 
         return redirect()->route('admin.post.index');

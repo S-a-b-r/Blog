@@ -10,7 +10,7 @@ class UnpublishController extends BaseController
 {
     public function __invoke(Post $post)
     {
-        $post->setAttribute('status', 0);
+        $post->setAttribute('status', Post::STATUS_UNPUBLICHED);
         $post->update();
 
         return redirect()->route('admin.post.index');

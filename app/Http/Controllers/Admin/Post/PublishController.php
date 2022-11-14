@@ -10,7 +10,7 @@ class PublishController extends BaseController
 {
     public function __invoke(Post $post)
     {
-        $post->setAttribute('status', 1);
+        $post->setAttribute('status', Post::STATUS_PUBLICHED);
         $post->update();
 
         return redirect()->route('admin.post.index');

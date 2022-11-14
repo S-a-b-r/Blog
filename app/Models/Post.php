@@ -16,7 +16,7 @@ class Post extends Model
 
     const STATUS_UNPUBLICHED = 0;
     const STATUS_PUBLICHED = 1;
-    const ARCHIVED = 2;
+    const STATUS_ARCHIVED = 2;
 
     public static function getStatus($idStatus)
     {

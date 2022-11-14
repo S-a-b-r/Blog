@@ -34,7 +34,7 @@
                                     <td>{{$post->updated_at}}</td>
                                     <td><a href="{{route('blog.show', $post->id)}}"><i class="far fa-eye"></i></a></td>
                                     <td>
-                                        <form action="{{route('admin.post.rearchive', $post->id)}}" method="post">
+                                        <form action="{{route('admin.post.publish', $post->id)}}" method="post">
                                             @csrf
                                             <button type="submit" class="border-0 bg-transparent">
                                                 <i class="fas fa-box-open text-info"></i>
@@ -63,21 +63,6 @@
             <!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-        <form action="{{route('admin.test')}}" method="post">
-            @csrf
-            <div class="row h-100">
-                <div class="col-8 bg-danger ">
-                    <div class="row justify-content-center">
-                        <input name="1" id="1" type="checkbox">
-                        <input id="2" type="checkbox">
-                        <input id="3" type="checkbox">
-                        <input id="4" type="checkbox">
-                    </div>
-                </div>
-                <div class="col-4 bg-dark">2</div>
-            </div>
-            <button class="btn-danger" type="submit">Submit</button>
-        </form>
     </section>
     <!-- /.content -->
 @endsection

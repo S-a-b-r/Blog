@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $posts = Post::where('status','2')->get();
+        $posts = Post::where('status', Post::STATUS_ARCHIVED)->get();
         return view('admin.archive.index', compact('posts'));
     }
 }

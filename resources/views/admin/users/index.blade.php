@@ -24,7 +24,8 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Название</th>
+                                    <th>Имя</th>
+                                    <th>Роль</th>
                                     <th>Создано</th>
                                     <th>Обновлено</th>
                                     <th colspan="3" class="text-center">Действие</th>
@@ -35,6 +36,11 @@
                                 <tr>
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>
+                                    <td>
+                                        @if($user->role == 0) Admin
+                                        @else Reader
+                                        @endif
+                                    </td>
                                     <td>{{$user->created_at}}</td>
                                     <td>{{$user->updated_at}}</td>
                                     <td><a href="{{route('admin.user.show',$user->id)}}"><i class="far fa-eye"></i></a></td>
